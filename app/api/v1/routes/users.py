@@ -1,16 +1,38 @@
-from fastapi import APIRouter, status, HTTPException
+from fastapi import APIRouter, status, HTTPException, Query
 from app.schemas.user import UserCreate, UserResponse
+from typing import Optional
+
 
 router = APIRouter(
     prefix='/users',
     tags=['Users']
 )
 
-@router.get('/', status_code=status.HTTP_200_OK)
-def get_users():
+@router.get('/')
+def get_users(
+    page: int = Query(1, ge=1),
+    page_size: int = Query(10, ge=1, le=100),
+    min_age: Optional[int] = Query(None, ge=0),
+    sort: Optional[str] = Query('asc')
+):
+    offset = (page - 1) * page_size
+
+    if sort not in ('asc','desc'):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="sort must be 'asc' or 'desc'"
+        )
+    if page_size > 50:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail='page size must be less than 50'
+        )
+    
     return {
-        'data': [],
-        'message': 'Users list'
+        'page': page,
+        'page_size': page_size,
+        'total': 0,
+        'items': []
     }
 
 @router.get('/{user_id}', status_code=status.HTTP_200_OK)
