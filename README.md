@@ -14,4 +14,15 @@
 **Key notes:**
 - GET requests must not change server state
 - POST requests should return 201 Created
-- Use 400 for bad requests and 422 for validation errors
+- Use 400 for bad requests 
+
+### Day 2 – RESTful Design & Validation
+**Topics covered:**
+- RESTful route design
+- Request vs Response schemas
+- Pydantic validation
+- Difference between 400 and 422 errors
+
+**Implemented endpoints:**
+- POST /api/v1/users
+- PUT /api/v1/users/{user_id}
