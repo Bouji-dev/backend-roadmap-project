@@ -52,3 +52,18 @@
 - Offset is calculated using (page - 1) * page_size
 - Query parameter validation errors return 422
 - Business rule violations return 400
+
+
+### Day 4 – Global Error Handling & Response Standardization
+**Topics covered:**
+- Problems of inconsistent error responses
+- Standard API response structure (success, data, error)
+- Custom application exceptions
+- Separation of business logic from framework-specific exceptions
+- Global exception handling in FastAPI
+
+**Key notes:**
+- Business logic should not raise HTTPException directly
+- Custom exceptions improve testability and maintainability
+- Global exception handlers ensure consistent API responses
+- Centralized error handling reduces code duplication

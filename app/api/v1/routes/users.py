@@ -2,6 +2,9 @@ from fastapi import APIRouter, status, HTTPException, Query
 from app.schemas.user import UserCreate, UserResponse
 from typing import Optional
 
+from app.core.exceptions import NotFoundException
+from app.schemas.response import APIResponse
+
 
 router = APIRouter(
     prefix='/users',
@@ -35,18 +38,16 @@ def get_users(
         'items': []
     }
 
-@router.get('/{user_id}', status_code=status.HTTP_200_OK)
+@router.get('/{user_id}', response_model=APIResponse[dict])
 def get_user(user_id: int):
-    if user_id < 1:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail='user_id must be greater than 0'
-        )
-    return {
-        'id': user_id,
-        'name': 'Test User'
-    }
-        
+    if user_id != 1:
+        raise NotFoundException('User not found')
+    return APIResponse(
+        success=True,
+        data={'id':1, 'name': 'Ehsan'},
+        error=None
+    )
+
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=UserResponse)
 def create_user(user: UserCreate):
     if user.age < 18:
