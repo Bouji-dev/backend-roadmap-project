@@ -54,16 +54,39 @@
 - Business rule violations return 400
 
 
-### Day 4 – Global Error Handling & Response Standardization
+### Day 4 – Global Error Handling & Custom Exceptions
 **Topics covered:**
-- Problems of inconsistent error responses
-- Standard API response structure (success, data, error)
-- Custom application exceptions
-- Separation of business logic from framework-specific exceptions
-- Global exception handling in FastAPI
+- Global error handling in FastAPI
+- Designing and using custom application exceptions
+- Standardizing API error response format
+- Separating business errors from HTTP layer concerns
+
+**Implemented endpoints / components:**
+- Base custom exception class
+- NotFoundException
+- Global exception handler
+- Unified API error response schema
 
 **Key notes:**
+- Centralized error handling improves maintainability and readability
 - Business logic should not raise HTTPException directly
-- Custom exceptions improve testability and maintainability
-- Global exception handlers ensure consistent API responses
-- Centralized error handling reduces code duplication
+- Consistent error responses simplify frontend error handling
+
+
+### Day 5 – Service Layer & Dependency Injection
+**Topics covered:**
+- Service layer concept in backend architecture
+- Separating business logic from API endpoints
+- Dependency Injection using FastAPI Depends
+- Refactoring endpoints for better testability
+
+**Implemented endpoints / components:**
+- UserService
+- Dependency provider (get_user_service)
+- Refactored user endpoint using service layer
+
+**Key notes:**
+- Service layer is framework-independent and reusable
+- Dependency injection makes unit testing and mocking easier
+- Existing endpoints were refactored instead of duplicated
+

@@ -1,9 +1,11 @@
-from fastapi import APIRouter, status, HTTPException, Query
+from fastapi import APIRouter, status, HTTPException, Query, Depends
 from app.schemas.user import UserCreate, UserResponse
 from typing import Optional
 
 from app.core.exceptions import NotFoundException
 from app.schemas.response import APIResponse
+from app.core.dependencies import get_user_service
+from app.services.user_service import UserService
 
 
 router = APIRouter(
@@ -39,12 +41,15 @@ def get_users(
     }
 
 @router.get('/{user_id}', response_model=APIResponse[dict])
-def get_user(user_id: int):
-    if user_id != 1:
-        raise NotFoundException('User not found')
+def get_user(
+    user_id: int,
+    service: UserService = Depends(get_user_service)
+):
+    user = service.get_user(user_id)
+
     return APIResponse(
         success=True,
-        data={'id':1, 'name': 'Ehsan'},
+        data=user,
         error=None
     )
 
