@@ -120,8 +120,7 @@
 - 404 responses usually indicate routing or prefix issues
 
 ### How to Run Tests
-```bash
-python -m pytest
+- python -m pytest
 
 
 ## Week 1 – Day 7: Weekly Review and Refactoring Mindset
