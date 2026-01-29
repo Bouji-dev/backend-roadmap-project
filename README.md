@@ -90,3 +90,30 @@
 - Dependency injection makes unit testing and mocking easier
 - Existing endpoints were refactored instead of duplicated
 
+
+## Week 1 – Day 6: Testing FastAPI with pytest
+
+### Topics Covered
+- Introduction to API testing in FastAPI
+- Using pytest as a test runner
+- FastAPI TestClient and its dependency on httpx
+- Writing a basic API test for a GET endpoint
+- Understanding test failures (404 vs 200)
+- Running tests inside a virtual environment
+
+### What Was Implemented
+- Created the first API test for the users endpoint
+- Used FastAPI TestClient to simulate HTTP requests
+- Executed tests using `python -m pytest`
+- Installed missing testing dependencies (pytest, httpx)
+- Analyzed a failing test and understood why it fails
+
+### Key Learnings
+- TestClient relies on Starlette and httpx internally
+- Tests must be executed with the same Python interpreter as the venv
+- A failing test is valuable feedback, not an error
+- 404 responses usually indicate routing or prefix issues
+
+### How to Run Tests
+```bash
+python -m pytest
