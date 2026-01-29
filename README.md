@@ -1,6 +1,7 @@
 ## Week 1 – REST API Fundamentals
 
 ### Day 1 – HTTP Methods & Status Codes
+
 **Topics covered:**
 - HTTP Methods (GET, POST, PUT, PATCH, DELETE)
 - REST API basic principles
@@ -18,6 +19,7 @@
 
 
 ### Day 2 – RESTful Design & Validation
+
 **Topics covered:**
 - RESTful route design principles
 - Proper HTTP method usage for resources
@@ -37,6 +39,7 @@
 
 
 ### Day 3 – Pagination, Filtering & Query Parameters
+
 **Topics covered:**
 - Pagination concepts and importance
 - Page-based pagination strategy
@@ -55,6 +58,7 @@
 
 
 ### Day 4 – Global Error Handling & Custom Exceptions
+
 **Topics covered:**
 - Global error handling in FastAPI
 - Designing and using custom application exceptions
@@ -74,6 +78,7 @@
 
 
 ### Day 5 – Service Layer & Dependency Injection
+
 **Topics covered:**
 - Service layer concept in backend architecture
 - Separating business logic from API endpoints
@@ -117,3 +122,31 @@
 ### How to Run Tests
 ```bash
 python -m pytest
+
+
+## Week 1 – Day 7: Weekly Review and Refactoring Mindset
+
+### Topics Covered
+- Reviewing the project structure after one week
+- Understanding test failures and debugging strategies
+- Refactoring mindset vs adding new features
+- Importance of service layer and dependency injection
+- Interview-oriented thinking for backend developers
+
+### What Was Reviewed
+- FastAPI routing and prefixes
+- Service and dependency separation
+- API testing strategy
+- Test failure analysis (404 vs 200)
+
+### Key Learnings
+- A clean architecture makes debugging easier
+- Tests help validate behavior, not just correctness
+- Dependency injection enables proper mocking
+- Backend development is about long-term maintainability
+
+### Next Steps
+- Start database integration (SQLAlchemy)
+- Add repository layer
+- Expand test coverage
+- Begin Week 2 with persistence layer
