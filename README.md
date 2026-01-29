@@ -96,9 +96,9 @@
 - Existing endpoints were refactored instead of duplicated
 
 
-## Week 1 – Day 6: Testing FastAPI with pytest
+### Day 6: Testing FastAPI with pytest
 
-### Topics Covered
+**Topics Covered:**
 - Introduction to API testing in FastAPI
 - Using pytest as a test runner
 - FastAPI TestClient and its dependency on httpx
@@ -106,46 +106,64 @@
 - Understanding test failures (404 vs 200)
 - Running tests inside a virtual environment
 
-### What Was Implemented
+**What Was Implemented:**
 - Created the first API test for the users endpoint
 - Used FastAPI TestClient to simulate HTTP requests
 - Executed tests using `python -m pytest`
 - Installed missing testing dependencies (pytest, httpx)
 - Analyzed a failing test and understood why it fails
 
-### Key Learnings
+**Key Learnings:**
 - TestClient relies on Starlette and httpx internally
 - Tests must be executed with the same Python interpreter as the venv
 - A failing test is valuable feedback, not an error
 - 404 responses usually indicate routing or prefix issues
 
-### How to Run Tests
+**How to Run Tests:**
 - python -m pytest
 
 
-## Week 1 – Day 7: Weekly Review and Refactoring Mindset
+### Day 7: Weekly Review and Refactoring Mindset
 
-### Topics Covered
+**Topics Covered:**
 - Reviewing the project structure after one week
 - Understanding test failures and debugging strategies
 - Refactoring mindset vs adding new features
 - Importance of service layer and dependency injection
 - Interview-oriented thinking for backend developers
 
-### What Was Reviewed
+**What Was Reviewed:**
 - FastAPI routing and prefixes
 - Service and dependency separation
 - API testing strategy
 - Test failure analysis (404 vs 200)
 
-### Key Learnings
+**Key Learnings:**
 - A clean architecture makes debugging easier
 - Tests help validate behavior, not just correctness
 - Dependency injection enables proper mocking
 - Backend development is about long-term maintainability
 
-### Next Steps
-- Start database integration (SQLAlchemy)
-- Add repository layer
-- Expand test coverage
-- Begin Week 2 with persistence layer
+
+## Week 2: PostgreSQL + SQLAlchemy (Real Production Setup)
+
+### Day 1: PostgreSQL and SQLAlchemy Fundamentals
+
+**Topics Covered:**
+- Introduction to databases in backend systems
+- PostgreSQL overview and production use cases
+- ORM concept and why SQLAlchemy is used
+- Core SQLAlchemy concepts (Engine, Session, Model)
+
+**Implementation:**
+- Initialized database module structure
+- Created SQLAlchemy Declarative Base
+- Configured database engine and session factory
+- Defined initial User database model
+
+**Key notes:**
+- Databases provide persistent storage
+- PostgreSQL is a production-ready relational database
+- SQLAlchemy abstracts SQL into Python objects
+- Engine manages database connections
+- Session represents a transactional unit of work
