@@ -1,11 +1,13 @@
 from fastapi import APIRouter, status, HTTPException, Query, Depends
 from app.schemas.user import UserCreate, UserResponse
 from typing import Optional
+from sqlalchemy.orm import Session
 
 from app.core.exceptions import NotFoundException
 from app.schemas.response import APIResponse
 from app.core.dependencies import get_user_service
 from app.services.user_service import UserService
+from app.db.session import get_db
 
 
 router = APIRouter(
@@ -40,18 +42,15 @@ def get_users(
         'items': []
     }
 
-@router.get('/{user_id}', response_model=APIResponse[dict])
+@router.get('/{user_id}')
 def get_user(
     user_id: int,
-    service: UserService = Depends(get_user_service)
+    db: Session = Depends(get_db)
 ):
-    user = service.get_user(user_id)
-
-    return APIResponse(
-        success=True,
-        data=user,
-        error=None
-    )
+    return {
+        'user_id': user_id,
+        'message': 'DB session injected successfully'
+    }
 
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=UserResponse)
 def create_user(user: UserCreate):

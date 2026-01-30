@@ -167,3 +167,26 @@
 - SQLAlchemy abstracts SQL into Python objects
 - Engine manages database connections
 - Session represents a transactional unit of work
+
+
+### Day 2: SQLAlchemy Session Lifecycle + FastAPI Dependency Injection
+
+**Topics**
+- SQLAlchemy session concept and responsibilities
+- Database session lifecycle
+- Common mistakes with global sessions
+- Dependency Injection in FastAPI
+- Using yield-based dependencies for cleanup
+
+**Implementation**
+- Extended database session configuration
+- Implemented get_db dependency with proper lifecycle handling
+- Injected database session into API routes using Depends
+- Prepared API routes for future database operations
+
+**Key Points**
+- Sessions must be short-lived and request-scoped
+- Global sessions can cause concurrency and memory issues
+- FastAPI manages dependency lifecycles automatically
+- Using yield ensures proper cleanup after each request
+- Dependency injection improves testability and decoupling
