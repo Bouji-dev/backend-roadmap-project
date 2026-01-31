@@ -190,3 +190,26 @@
 - FastAPI manages dependency lifecycles automatically
 - Using yield ensures proper cleanup after each request
 - Dependency injection improves testability and decoupling
+
+
+### Day 3: Alembic & Database Migrations
+
+**Topics**
+- Database schema evolution problem
+- Concept of database migrations
+- Differences between development and production databases
+- Introduction to Alembic
+- Migration workflow in real-world projects
+
+**Implementation**
+- Reviewed database change scenarios
+- Prepared project structure for migrations
+- Analyzed Alembic role in SQLAlchemy-based projects
+- Defined standard migration workflow used in teams
+
+**Key Points**
+- Database schemas change over time
+- Migrations track and version database changes
+- create_all() is not suitable for production systems
+- Alembic manages upgrade and downgrade operations
+- Migration files are part of the source code
