@@ -1,12 +1,11 @@
-from app.core.exceptions import NotFoundException
-
+from app.repositories.user_repository import UserRepository
 
 class UserService:
-    def get_user(self, user_id: int) -> dict:
-        if user_id != 1:
-            raise NotFoundException('User not found')
-        
-        return {
-            'id': 1,
-            'name': 'Ehsan'
-        }
+    def __init__(self, user_repository: UserRepository):
+        self.user_repository = user_repository
+
+    def get_user(self, user_id: int):
+        user = self.user_repository.get_by_id(user_id)
+        if not user:
+            return None
+        return user

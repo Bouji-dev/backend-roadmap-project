@@ -8,6 +8,7 @@ from app.schemas.response import APIResponse
 from app.core.dependencies import get_user_service
 from app.services.user_service import UserService
 from app.db.session import get_db
+from app.repositories.user_repository import UserRepository
 
 
 router = APIRouter(
@@ -47,10 +48,13 @@ def get_user(
     user_id: int,
     db: Session = Depends(get_db)
 ):
-    return {
-        'user_id': user_id,
-        'message': 'DB session injected successfully'
-    }
+    repo = UserRepository(db)
+    service = UserService(repo)
+    user = service.get_user(user_id)
+
+    if not user:
+        raise HTTPException(status_code=404, detail='User not found')
+    return user
 
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=UserResponse)
 def create_user(user: UserCreate):
